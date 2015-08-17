@@ -2,8 +2,8 @@ package sorting;
 
 import java.util.Arrays;
 
-public class BubbleSort {
-	public static void sorting(int[] array) {
+public class Bubble {
+	public static void sort(int[] array) {
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1; j++) {
 				if (array[j] > array[j + 1]) {
@@ -19,7 +19,7 @@ public class BubbleSort {
 		int[] a = { 4, 5, 12, 1, 1, 3, 6, 4, 1, 23, 5, 100, 13 };
 		int[] b = new int[a.length];
 		System.arraycopy(a, 0, b, 0, a.length);
-		BubbleSort.sorting(a);
+		Bubble.sort(a);
 		Arrays.sort(b);
 		System.out.println(Arrays.equals(a, b));
 	}

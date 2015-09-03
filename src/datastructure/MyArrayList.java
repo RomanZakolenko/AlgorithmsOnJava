@@ -101,7 +101,7 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		return new MyListIterator<T>();
+		return new MyListIterator();
 	}
 
 	@Override
@@ -120,6 +120,13 @@ public class MyArrayList<T> implements List<T> {
 		int index = -1;
 		boolean next = false;
 		boolean previous = false;
+
+		public MyListIterator() {
+		}
+
+		public MyListIterator(int index) {
+			this.index = index;
+		}
 
 		@Override
 		public boolean hasNext() {
@@ -148,7 +155,13 @@ public class MyArrayList<T> implements List<T> {
 
 		@Override
 		public void add(T obj) {
-			// MyArrayList.this.add(index + 1, obj);
+			if (size == elements.length) {
+				Object[] newElements = new Object[(int) Math.round(elements.length * 1.25)];
+				System.arraycopy(elements, 0, newElements, 0, size);
+				elements = newElements;
+			}
+			System.arraycopy(elements, index + 1, elements, index + 2, size - index - 1);
+			elements[index + 1] = obj;
 		}
 
 		@Override
@@ -195,13 +208,12 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public ListIterator<T> listIterator() {
-		return new MyListIterator<T>();
+		return new MyListIterator();
 	}
 
 	@Override
-	public ListIterator<T> listIterator(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public ListIterator<T> listIterator(int index) {
+		return new MyListIterator(index);
 	}
 
 	@Override

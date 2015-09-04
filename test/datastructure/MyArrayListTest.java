@@ -211,4 +211,13 @@ public class MyArrayListTest {
 		listIter.next();
 		assertTrue(listIter.hasPrevious());
 	}
+
+	@Test
+	public void testNextIndex() {
+		ListIterator<String> listIter = list.listIterator();
+		assertEquals(0, listIter.nextIndex());
+		list.add("first");
+		listIter.next();
+		assertEquals(1, listIter.nextIndex());
+	}
 }

@@ -220,4 +220,31 @@ public class MyArrayListTest {
 		listIter.next();
 		assertEquals(1, listIter.nextIndex());
 	}
+
+	@Test
+	public void testListIteratorPrevious() {
+		ListIterator<String> listIter = list.listIterator();
+		list.add("first");
+		list.add("second");
+		listIter.next();
+		listIter.next();
+		assertEquals("first", listIter.previous());
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testListIteratorException() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.previous();
+	}
+
+	@Test
+	public void testListIteratorPreviousIndex() {
+		ListIterator<String> listIter = list.listIterator();
+		assertEquals(-1, listIter.previousIndex());
+		list.add("first");
+		list.add("second");
+		listIter.next();
+		listIter.next();
+		assertEquals(0, listIter.previousIndex());
+	}
 }

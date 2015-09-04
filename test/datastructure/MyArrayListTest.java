@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 import org.junit.Before;
@@ -174,5 +175,29 @@ public class MyArrayListTest {
 		list.add("scala");
 		list.add("java");
 		assertEquals(2, list.lastIndexOf("java"));
+	}
+
+	@Test
+	public void testListIteratorAdd() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.add("first");
+		assertEquals("first", list.get(0));
+		listIter.add("second");
+		assertEquals("second", list.get(0));
+	}
+
+	@Test
+	public void testRemove() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.add("first");
+		listIter.next();
+		listIter.remove();
+		assertTrue(list.isEmpty());
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testRemoveException() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.remove();
 	}
 }

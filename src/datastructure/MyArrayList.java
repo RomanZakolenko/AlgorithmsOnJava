@@ -30,6 +30,7 @@ public class MyArrayList<T> implements List<T> {
 		}
 		System.arraycopy(elements, index, elements, index + 1, size - index);
 		elements[index] = obj;
+		size++;
 	}
 
 	@Override
@@ -162,6 +163,7 @@ public class MyArrayList<T> implements List<T> {
 			}
 			System.arraycopy(elements, index + 1, elements, index + 2, size - index - 1);
 			elements[index + 1] = obj;
+			size++;
 		}
 
 		@Override
@@ -219,10 +221,11 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public boolean remove(Object obj) {
 		int index = indexOf(obj);
+		size--;
 		if (index == -1) {
 			return false;
 		} else {
-			System.arraycopy(elements, index + 1, elements, index, size - index);
+			System.arraycopy(elements, index + 1, elements, index, size - index + 1);
 			return true;
 		}
 	}
@@ -231,6 +234,7 @@ public class MyArrayList<T> implements List<T> {
 	public T remove(int index) {
 		T res = (T) elements[index];
 		System.arraycopy(elements, index + 1, elements, index, size - index);
+		size--;
 		return res;
 	}
 

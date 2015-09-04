@@ -200,4 +200,15 @@ public class MyArrayListTest {
 		ListIterator<String> listIter = list.listIterator();
 		listIter.remove();
 	}
+
+	@Test
+	public void testListIteratorHasPrevious() {
+		ListIterator<String> listIter = list.listIterator();
+		assertFalse(listIter.hasPrevious());
+		listIter.add("first");
+		listIter.add("second");
+		listIter.next();
+		listIter.next();
+		assertTrue(listIter.hasPrevious());
+	}
 }

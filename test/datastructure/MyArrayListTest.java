@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -152,4 +153,22 @@ public class MyArrayListTest {
 		assertFalse(iter.hasNext());
 	}
 
+	@Test
+	public void testIteratorNext() {
+		Iterator<String> iter = list.iterator();
+		String expResult = "first";
+		list.add(expResult);
+		assertEquals(expResult, iter.next());
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testIteratorNextException() {
+		Iterator<String> iter = list.iterator();
+		iter.next();
+	}
+
+	@Test
+	public void testLastIndexOf() {
+		Iterator<String> iter = list.iterator();
+	}
 }

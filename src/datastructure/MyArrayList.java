@@ -221,10 +221,10 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public boolean remove(Object obj) {
 		int index = indexOf(obj);
-		size--;
 		if (index == -1) {
 			return false;
 		} else {
+			size--;
 			System.arraycopy(elements, index + 1, elements, index, size - index + 1);
 			return true;
 		}

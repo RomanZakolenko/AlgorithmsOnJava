@@ -187,7 +187,7 @@ public class MyArrayListTest {
 	}
 
 	@Test
-	public void testRemove() {
+	public void testListIteratorRemove() {
 		ListIterator<String> listIter = list.listIterator();
 		listIter.add("first");
 		listIter.next();
@@ -196,7 +196,7 @@ public class MyArrayListTest {
 	}
 
 	@Test(expected = IllegalStateException.class)
-	public void testRemoveException() {
+	public void testListIteratorRemoveException() {
 		ListIterator<String> listIter = list.listIterator();
 		listIter.remove();
 	}
@@ -247,4 +247,38 @@ public class MyArrayListTest {
 		listIter.next();
 		assertEquals(0, listIter.previousIndex());
 	}
+
+	@Test
+	public void testListIteratorSet() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.add("first");
+		listIter.next();
+		listIter.set("FIRST");
+		assertEquals("FIRST", list.get(0));
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testListIteratorSetException() {
+		ListIterator<String> listIter = list.listIterator();
+		listIter.set("fail");
+	}
+
+	@Test
+	public void testRemove() {
+		assertFalse(list.remove("fail"));
+		list.add("first");
+		assertTrue(list.remove("first"));
+		assertTrue(list.isEmpty());
+		assertFalse(list.contains("first"));
+	}
+
+	@Test
+	public void testRemoveIndex() {
+		list.add("first");
+		list.add("second");
+		list.remove(0);
+		assertEquals(1, list.size());
+		assertEquals("second", list.get(0));
+	}
+
 }

@@ -3,6 +3,7 @@ package datastructure;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -132,4 +133,23 @@ public class MyArrayListTest {
 		assertEquals(1, list.indexOf(second));
 		assertEquals(-1, list.indexOf("third"));
 	}
+
+	@Test
+	public void testIsEmpty() {
+		assertTrue(list.isEmpty());
+		list.add("first");
+		assertFalse(list.isEmpty());
+	}
+
+	@Test
+	public void testIteratorHasNext() {
+		Iterator<String> iter = list.iterator();
+		assertFalse(iter.hasNext());
+		list.add("first");
+		assertTrue(iter.hasNext());
+		iter.next();
+		iter.remove();
+		assertFalse(iter.hasNext());
+	}
+
 }

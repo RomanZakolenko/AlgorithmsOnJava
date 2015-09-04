@@ -169,6 +169,10 @@ public class MyArrayListTest {
 
 	@Test
 	public void testLastIndexOf() {
-		Iterator<String> iter = list.iterator();
+		assertEquals(-1, list.lastIndexOf("false"));
+		list.add("java");
+		list.add("scala");
+		list.add("java");
+		assertEquals(2, list.lastIndexOf("java"));
 	}
 }

@@ -308,4 +308,13 @@ public class MyArrayListTest {
 		assertEquals("first", list.get(0));
 	}
 
+	@Test
+	public void testSubList() {
+		list.addAll(Arrays.asList("1", "2", "3", "4", "5"));
+		List<String> res = list.subList(0, 5);
+		assertArrayEquals(res.toArray(), list.toArray());
+		res = list.subList(1, 4);
+		assertArrayEquals(new String[] { "2", "3", "4" }, res.toArray());
+	}
+
 }

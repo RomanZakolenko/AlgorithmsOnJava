@@ -1,5 +1,6 @@
 package datastructure;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -276,9 +277,10 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public List<T> subList(int arg0, int arg1) {
-		Object[] subArray = new Object[arg1 - arg0];
-		System.arraycopy(elements, arg0, subArray, 0, arg1 - arg0);
 		MyArrayList<T> res = new MyArrayList<T>();
+		res.size = arg1 - arg0;
+		Object[] subArray = new Object[res.size];
+		System.arraycopy(this.elements, arg0, subArray, 0, res.size);
 		res.elements = subArray;
 		return res;
 	}

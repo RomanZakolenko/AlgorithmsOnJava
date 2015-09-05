@@ -12,10 +12,14 @@ import org.junit.Test;
 
 public class MyArrayListTest {
 	private static MyArrayList<String> list;
+	private static Iterator<String> iter;
+	private static ListIterator<String> listIter;
 
 	@Before
 	public void setUp() {
 		list = new MyArrayList<String>();
+		iter = list.iterator();
+		listIter = list.listIterator();
 	}
 
 	@Test
@@ -145,7 +149,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testIteratorHasNext() {
-		Iterator<String> iter = list.iterator();
 		assertFalse(iter.hasNext());
 		list.add("first");
 		assertTrue(iter.hasNext());
@@ -156,7 +159,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testIteratorNext() {
-		Iterator<String> iter = list.iterator();
 		String expResult = "first";
 		list.add(expResult);
 		assertEquals(expResult, iter.next());
@@ -164,7 +166,6 @@ public class MyArrayListTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void testIteratorNextException() {
-		Iterator<String> iter = list.iterator();
 		iter.next();
 	}
 
@@ -179,7 +180,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testListIteratorAdd() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.add("first");
 		assertEquals("first", list.get(0));
 		listIter.add("second");
@@ -188,7 +188,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testListIteratorRemove() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.add("first");
 		listIter.next();
 		listIter.remove();
@@ -197,13 +196,11 @@ public class MyArrayListTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void testListIteratorRemoveException() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.remove();
 	}
 
 	@Test
 	public void testListIteratorHasPrevious() {
-		ListIterator<String> listIter = list.listIterator();
 		assertFalse(listIter.hasPrevious());
 		listIter.add("first");
 		listIter.add("second");
@@ -214,7 +211,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testNextIndex() {
-		ListIterator<String> listIter = list.listIterator();
 		assertEquals(0, listIter.nextIndex());
 		list.add("first");
 		listIter.next();
@@ -223,7 +219,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testListIteratorPrevious() {
-		ListIterator<String> listIter = list.listIterator();
 		list.add("first");
 		list.add("second");
 		listIter.next();
@@ -233,13 +228,11 @@ public class MyArrayListTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void testListIteratorException() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.previous();
 	}
 
 	@Test
 	public void testListIteratorPreviousIndex() {
-		ListIterator<String> listIter = list.listIterator();
 		assertEquals(-1, listIter.previousIndex());
 		list.add("first");
 		list.add("second");
@@ -250,7 +243,6 @@ public class MyArrayListTest {
 
 	@Test
 	public void testListIteratorSet() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.add("first");
 		listIter.next();
 		listIter.set("FIRST");
@@ -259,7 +251,6 @@ public class MyArrayListTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void testListIteratorSetException() {
-		ListIterator<String> listIter = list.listIterator();
 		listIter.set("fail");
 	}
 

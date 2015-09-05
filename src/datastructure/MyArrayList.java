@@ -251,12 +251,12 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public boolean retainAll(Collection<?> c) {
 		ListIterator<T> iter = this.listIterator();
-		boolean res = true;
+		boolean res = false;
+		T temp;
 		while (iter.hasNext()) {
-			if (!c.contains(iter.next())) {
-				this.remove(iter.previous());
-			} else {
-				res = false;
+			temp = iter.next();
+			if (!c.contains(temp)) {
+				res = this.remove(temp);
 			}
 		}
 		return res;

@@ -286,4 +286,18 @@ public class MyArrayListTest {
 		List<String> c = new ArrayList(Arrays.asList("2", "1", "3"));
 		assertFalse(list.removeAll(c));
 	}
+
+	@Test
+	public void testRetainAllTrue() {
+		List<String> c = new ArrayList(Arrays.asList("2", "1", "3"));
+		list.addAll(Arrays.asList("1", "1", "2", "4", "3"));
+		assertTrue(list.retainAll(c));
+	}
+
+	@Test
+	public void testRetainAllFalse() {
+		List<String> c = new ArrayList(Arrays.asList("2", "1", "3"));
+		assertFalse(list.retainAll(c));
+	}
+
 }

@@ -300,4 +300,12 @@ public class MyArrayListTest {
 		assertFalse(list.retainAll(c));
 	}
 
+	@Test
+	public void testSet() {
+		list.addAll(Arrays.asList("1", "2"));
+		String expResult = list.set(0, "first");
+		assertEquals(expResult, "1");
+		assertEquals("first", list.get(0));
+	}
+
 }

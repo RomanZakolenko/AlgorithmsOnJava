@@ -3,7 +3,9 @@ package datastructure;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
@@ -272,4 +274,16 @@ public class MyArrayListTest {
 		assertEquals("second", list.get(0));
 	}
 
+	@Test
+	public void testRemoveAllTrue() {
+		List<String> c = new ArrayList(Arrays.asList("2", "1", "3"));
+		list.addAll(Arrays.asList("1", "1", "2", "4", "3"));
+		assertTrue(list.removeAll(c));
+	}
+
+	@Test
+	public void testRemoveAllFalse() {
+		List<String> c = new ArrayList(Arrays.asList("2", "1", "3"));
+		assertFalse(list.removeAll(c));
+	}
 }

@@ -240,7 +240,7 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		boolean res = true;
+		boolean res = false;
 		Iterator<?> iter = c.iterator();
 		while (iter.hasNext()) {
 			res = this.remove(iter.next());
